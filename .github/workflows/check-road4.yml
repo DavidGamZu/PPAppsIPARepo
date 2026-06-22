@@ -14,7 +14,11 @@ jobs:
         run: |
           RESPONSE=$(curl -s -m 20 https://telegram-road4-bot.onrender.com/health)
 
-          echo "=================================="
-          echo "RAW RESPONSE:"
-          echo "$RESPONSE"
-          echo "=================================="
+          echo "Response: $RESPONSE"
+
+          if [ "$RESPONSE" != '{"status":"ok"}' ]; then
+            echo "Road4 health check failed"
+            echo "RAW RESPONSE:"
+            echo "$RESPONSE"
+            exit 1
+          fi
