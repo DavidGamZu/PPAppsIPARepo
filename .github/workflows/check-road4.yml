@@ -2,7 +2,7 @@ name: Check Road4
 
 on:
   schedule:
-    - cron: "0 5 * * *" # כל יום 08:00 בישראל בקיץ בערך
+    - cron: "0 3 * * *" # כל יום 08:00 בישראל בקיץ בערך
   workflow_dispatch:
 
 jobs:
