@@ -1,0 +1,22 @@
+name: Check Road4
+
+on:
+  schedule:
+    - cron: "0 5 * * *" # כל יום 08:00 בישראל בקיץ בערך
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Road4 health
+        run: |
+          RESPONSE=$(curl -s -m 20 https://telegram-road4-bot.onrender.com/health)
+
+          echo "Response: $RESPONSE"
+
+          if [ "$RESPONSE" != '{"status":"ok"}' ]; then
+            echo "Road4 health check failed"
+            exit 1
+          fi
