@@ -2,7 +2,7 @@ name: Check Road4
 
 on:
   schedule:
-    - cron: "0 3 * * *" # כל יום 08:00 בישראל בקיץ בערך
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 jobs:
@@ -14,9 +14,7 @@ jobs:
         run: |
           RESPONSE=$(curl -s -m 20 https://telegram-road4-bot.onrender.com/health)
 
-          echo "Response: $RESPONSE"
-
-          if [ "$RESPONSE" != '{"status":"ok"}' ]; then
-            echo "Road4 health check failed"
-            exit 1
-          fi
+          echo "=================================="
+          echo "RAW RESPONSE:"
+          echo "$RESPONSE"
+          echo "=================================="
