@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check Road4 health
         run: |
-          RESPONSE=$(curl -s -m 20 https://telegram-road4-bot.onrender.com/health1)
+          RESPONSE=$(curl -s -m 20 https://telegram-road4-bot.onrender.com/health)
 
           echo "RAW RESPONSE:"
           echo "$RESPONSE"
